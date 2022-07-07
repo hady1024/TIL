@@ -90,7 +90,9 @@ merge : 브랜치 병합 (꼭 마스터에서 해야함) 병합하고 나서 브
 
 - Git을 활용하여 협업하는 흐름으로 branch를 활용하는 전략을 의미.
 
-<img src="C:\Users\하제리\Desktop\TIL\정리정리\새 폴더 (2)\git-flow_overall_graph.png" alt="git-flow_overall_graph" style="zoom:33%;" />
+<img src="branch.assets/git-flow_overall_graph-16572170801432.png" alt="git-flow_overall_graph" style="zoom:33%;" />
+
+
 
 # Github Flow 기본원칙
 

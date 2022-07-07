@@ -6,6 +6,6 @@
 
 - [git](./정리정리/git정리공부!.md)
 
-- [branch](./정리정리/branch/branch.md)
+- [branch](./정리정리/branch.md)
 
   
