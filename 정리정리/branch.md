@@ -43,6 +43,8 @@ merge : 브랜치 병합 (꼭 마스터에서 해야함) 병합하고 나서 브
 # branch, Github Flow
 
 - Github으로 협업하는 흐름
+- 여러명의 사람들이 1개의 저장소를 사용하는 환경에서 효과적임
+- Github Flow, Git Flow, Gitlab Flow
 
 ## 1. branch 관련 명령어
 
@@ -86,6 +88,8 @@ merge : 브랜치 병합 (꼭 마스터에서 해야함) 병합하고 나서 브
 
 ​         직접 수정을 진행 해야함.
 
+
+
 # Git Flow
 
 - Git을 활용하여 협업하는 흐름으로 branch를 활용하는 전략을 의미.
@@ -126,3 +130,7 @@ merge : 브랜치 병합 (꼭 마스터에서 해야함) 병합하고 나서 브
 
 
 
+
+
+- git keep : 빈 폴더를 만들기 위해서
+- git ignore : git 추적하지 않는 파일 관리
