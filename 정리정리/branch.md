@@ -54,25 +54,25 @@ merge : 브랜치 병합 (꼭 마스터에서 해야함) 병합하고 나서 브
 (master) $ git branch example
 ```
 
-	2. 브랜치 이동
+2. 브랜치 이동
 
 ```bash
 (master) $ git checkout example
 ```
 
-	3.  브랜치 생성 및 이동
+3.  브랜치 생성 및 이동
 
 ```bash
 (master) $ git checkout -b example
 ```
 
-	4. 브랜치 목록
+4. 브랜치 목록
 
 ```bash
 (master) $ git branch
 ```
 
-	5. 브랜치 삭제
+5. 브랜치 삭제
 
 ```bash
 (master) $ git branch -d example
@@ -93,6 +93,16 @@ merge : 브랜치 병합 (꼭 마스터에서 해야함) 병합하고 나서 브
 # Git Flow
 
 - Git을 활용하여 협업하는 흐름으로 branch를 활용하는 전략을 의미.
+
+#### 📌Git flow branch 
+
+|             brach             |                          주요 특징                           |                     예시                      |
+| :---------------------------: | :----------------------------------------------------------: | :-------------------------------------------: |
+|         master (main)         |                  - 배포 가능한 상태의 코드                   |  LOL 클라이언트 라이브 버전 (9.23.298.3143)   |
+|        develop (main)         | - feature branch로 나뉘어지거나, 발생된 버그 수정 등 개발 진행 <br />- 개발 이후 release branch로 갈라짐 |         다음 패치를 위한 개발 (9.24)          |
+| feature braches (supporting)  | - 기능별 개발 브랜치 (topic branch)<br />- 기능이 반영되거나 드랍되는 경우 브랜치 삭제 | 개발시 기능별 예) 신규컨텐츠, 드래곤 업데이트 |
+| release branches (supporting) | - 개발 완료 이후 QA/Test 등을 통해 얻어진 다음 배포 전 minor bug fix 등 반영 |               9.24a, 9.24b, ...               |
+|     hotfixes (supporting)     | - 긴급하게 반영 해야하는 bug fix<br />- releasae branch는 다음 버전을 위한 것이라면, hotfix branch는 현재 버전을 위한 것 |             긴급 패치를 위한 작업             |
 
 <img src="branch.assets/git-flow_overall_graph-16572170801432.png" alt="git-flow_overall_graph" style="zoom:33%;" />
 
@@ -133,4 +143,4 @@ merge : 브랜치 병합 (꼭 마스터에서 해야함) 병합하고 나서 브
 
 
 - git keep : 빈 폴더를 만들기 위해서
-- git ignore : git 추적하지 않는 파일 관리
+- git ignore : git 추적하지 않는 파일 관리 , git 으로 관리하지 않은 파일 관리
