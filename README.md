@@ -12,6 +12,10 @@
 
 - [Python 이론](./Python/파이썬.md)
 
+- [제어문](./Python/제어문.md)
+
+  
+  
   
 
 ​	
