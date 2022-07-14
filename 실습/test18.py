@@ -9,3 +9,5 @@ for char in word:
     else:
         result[char] = result[char] + 1
 print(result)
+
+# 위의 풀이법은 강의시간 풀이법 보고 한 것입니다. ㅠ..
