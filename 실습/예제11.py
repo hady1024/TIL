@@ -62,7 +62,7 @@
 
     # pprint(movie_info(movie, genres_list))
 
-
+# 함수 종료시키는 return이 없다. return 은 함수를 종료 시켜주는 역할을 수행한다. return이 없으므로 None이 출력 되었다.
 
 from pprint import pprint
 
@@ -84,7 +84,7 @@ def movie_info(movie, genres):
         "vote_average": movie["vote_average"],
     }
 
-
+    return new_movie_info
 
 if __name__ == "__main__":
     movie = {
