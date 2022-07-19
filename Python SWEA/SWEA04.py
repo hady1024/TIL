@@ -16,4 +16,4 @@ for i in range(1,T+1):
     else:
         result = '='
 
-    print(f'#{i} {result}'
+    print(f'#{i} {result}')
