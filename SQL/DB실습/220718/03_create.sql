@@ -91,6 +91,7 @@ SELECT height, COUNT(*) FROM healthcare GROUP BY height ORDER BY COUNT(*) DESC L
 -- 150     128555
 
 -- 6. 키(height)와 몸무게(weight)를 기준으로 구분하고, 몸무게와, 키, 해당 그룹의 사람의 수를 출력하시오. 
+-- 단, 사람의 수를 기준으로 내림차순으로 5개까지 출력하시오.
 SELECT weight, height, COUNT(*) FROM healthcare GROUP BY height, weight ORDER BY COUNT(*) DESC LIMIT 5;
 -- weight height COUNT(*)
 -- ------  ------  --------
@@ -109,6 +110,7 @@ SELECT avg(waist), COUNT(*) FROM healthcare GROUP BY is_drinking;
 -- 82.7714285714286  196
 
 -- 8. 각 성별(gender)의 평균 왼쪽 시력(va_left)과 평균 오른쪽 시력(va_right)를 출력하시오.
+-- 단, 평균 왼쪽 시력과 평균 오른쪽 시력의 컬럼명을 '평균 왼쪽 시력' '평균 오른쪽 시력'로 표시하고, 평균 시력은 소수점 둘째 자리까지 출력하시오.
 SELECT ROUND(AVG(va_left),2)"평균 왼쪽 시력",ROUND(AVG(va_right),2)"평균 오른쪽 시력" FROM healthcare GROUP BY gender;
 -- 평균 왼쪽 시력  평균 오른쪽 시력
 -- --------  ---------
