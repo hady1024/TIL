@@ -111,7 +111,13 @@ InvoiceId  CustomerId
 
 -- 12. 각 invoices_item(상품)을 포함하는 invoice(송장)와 해당 invoice를 받을 customer(고객) 데이터를 모두 함께 출력하세요.
 -- 단, InvoiceLineId, InvoiceId, CustomerId 컬럼을 `InvoiceId` 기준으로 내림차순으로 5개만 출력하세요.
-
-
+SELECT A.InvoiceLineId, B.InvoiceId, C.CustomerId FROM invoice_items AS A JOIN invoices AS B ON A.InvoiceId = B.InvoiceId JOIN customers AS C ON B.CustomerId = C.CustomerId ORDER BY A.InvoiceId DESC LIMIT 5;
+InvoiceLineId  InvoiceId  CustomerId
+-------------  ---------  ----------
+2240           412        58        
+2239           411        44        
+2238           411        44        
+2237           411        44        
+2236           411        44
 
 

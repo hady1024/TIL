@@ -138,7 +138,13 @@ InvoiceId  CustomerId
 | 단, InvoiceLineId, InvoiceId, CustomerId 컬럼을 `InvoiceId` 기준으로 내림차순으로 5개만 출력하세요.
 
 ```
-
+InvoiceLineId  InvoiceId  CustomerId
+-------------  ---------  ----------
+2240           412        58        
+2239           411        44        
+2238           411        44        
+2237           411        44        
+2236           411        44
 ```
 
 ### 13. 각 cusotmer가 주문한 invoices_item의 개수를 출력하세요.
