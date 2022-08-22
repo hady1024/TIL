@@ -138,6 +138,7 @@ InvoiceId  CustomerId
 | 단, InvoiceLineId, InvoiceId, CustomerId 컬럼을 `InvoiceId` 기준으로 내림차순으로 5개만 출력하세요.
 
 ```
+SELECT A.InvoiceLineId, B.InvoiceId, C.CustomerId FROM invoice_items AS A JOIN invoices AS B ON A.InvoiceId = B.InvoiceId JOIN customers AS C ON B.CustomerId = C.CustomerId ORDER BY A.InvoiceId DESC LIMIT 5;
 InvoiceLineId  InvoiceId  CustomerId
 -------------  ---------  ----------
 2240           412        58        
@@ -149,6 +150,7 @@ InvoiceLineId  InvoiceId  CustomerId
 
 ### 13. 각 cusotmer가 주문한 invoices_item의 개수를 출력하세요.
 | 단, CustomerId와 개수 컬럼을 `CustomerId` 기준으로 오름차순으로 5개만 출력하세요.
+
 ```sql
 
 ```
