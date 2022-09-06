@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+h1{
+    text-align: center;
+    font-size: 2rem;
+    color:black
+}
+
+
+body{
+    margin: 3rem;
+    background-color:white
+}
+
+.mb-3{
+    border-left: 10rem;
+    margin-left: 10rem;
+    
+}
+
+.btn{
+    margin-left: 10rem;
+}
+
