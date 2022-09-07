@@ -1,0 +1,14 @@
+h1 {
+    letter-spacing:-1px;
+    color:black;
+    font-weight:bolder;
+  }
+  
+  .p-line {
+    line-height: 30px;
+  }
+  
+  .btn-color {
+    color: rgb(255, 255, 255);
+    
+  }
