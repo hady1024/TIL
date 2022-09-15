@@ -71,26 +71,57 @@
   </nav>
 
 
-
   <!-- 메인 전체 -->
   <section id="content-wrap">
-    ...
+
+    <!-- 리뷰 작성하기 -->
+    <section>
+      <h2 class="text-center my-5 fw-normal">리뷰 작성하기</h2>
+    </section>
+
+    <!-- 메인 -->
+    <section class="container">
+
+      <!-- 영화 선택하기 -->
+      <select class="form-select my-5" aria-label="Default select example">
+        <option selected>영화 선택하기</option>
+        <option value="1">쇼생크 탈출</option>
+        <option value="2">죽은 시인의 사회</option>
+        <option value="3">다크나이트 라이즈</option>
+        <option value="4">그랜드 부다페스트 호텔</option>
+        <option value="5">HER</option>
+        <option value="6">위대한 쇼맨</option>
+      </select>
+
+      <!-- 리뷰 글 쓰기 -->
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">리뷰 제목</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="리뷰를 작성해주세요.">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">리뷰 내용</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+      <!-- submit 버튼 -->
+      <input class="btn btn-primary my-3" type="submit" value="Submit">
+    </section>
+
   </section>
 
 
 
-  
+
+
+
   <!-- 푸터 -->
-  <footer>
+  <footer class="footer">
     <div class="bg-dark py-4 mt-5">
       <p class="text-white text-center m-0">CREATED BY 하두연, 김태현</p>
     </div>
   </footer>
 
 
-
-
-  
 
   <!-- 자바스크립트 -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
