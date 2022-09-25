@@ -99,6 +99,8 @@
 - [JS01](./JS/JS01.md)
 - [JS02](./JS/JS02.md)
 - [JS03](./JS/JS03.md)
+- [Django01](./Django/Django01.md)
+- [Django02](./Django/Django02.md)
 
 
 
