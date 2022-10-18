@@ -109,6 +109,7 @@
 - [Django03](./Django/Django03.md)
 - [Django04](./Django/Django04.md)
 - [Django05](./Django/Django05.md)
+- [Django06](./Django/Django06.md)
 
 
 
