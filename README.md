@@ -116,6 +116,7 @@
 ### 📚 10월 1주차
 
 - [Django07](./Django/Django07.md)
+- [Django08](./Django/Django08.md)
 
 
 
