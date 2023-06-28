@@ -3,3 +3,4 @@ while True:
     if x == "END":
         break
     print(x[::-1])
+# 다시 풀어보기
