@@ -8,3 +8,4 @@ for _ in range(N):
     for k in range(num, C + 1, num):
         c[k] = 1
 print(sum(c))
+     
