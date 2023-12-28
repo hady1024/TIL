@@ -14,3 +14,5 @@ for i in range(t):
         print("%s & %s are anagrams." % (a, b))
     else:
         print("%s & %s are NOT anagrams." % (a, b))
+
+# 다시 풀어보기
