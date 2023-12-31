@@ -15,4 +15,3 @@ for i in range(t):
     else:
         print("%s & %s are NOT anagrams." % (a, b))
 
-# 다시 풀어보기
