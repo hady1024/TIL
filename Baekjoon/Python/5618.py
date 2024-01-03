@@ -22,3 +22,5 @@ lst.sort()
 
 for num in lst:
     print(num)
+
+# 다시 풀어보기
