@@ -8,4 +8,4 @@ for _ in range(T):
 
     print(result // A)
 
-    # 다시 해보기
+    
