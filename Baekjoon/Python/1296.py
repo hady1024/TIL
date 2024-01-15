@@ -25,4 +25,4 @@ scoreBoard.sort(key=lambda x: x[1], reverse=True)
 
 print(scoreBoard[0][0])
 
-# 다시 풀어보기
+# 다시 풀어보기, 다시 생각해보기 정리해보기
