@@ -17,4 +17,4 @@ for a in tmp:
 
 print(sorted(answer)[0])
 
-# 다시 풀어보기
+
