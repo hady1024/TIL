@@ -16,4 +16,3 @@ for i in result :
     print(i)
 
 
-# 다중 for문 다시 해보기
