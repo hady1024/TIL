@@ -9,4 +9,4 @@ for i in range(1,len(word)-1):
 ans_list.sort()
 print(ans_list[0])
 
-# 참고한 것 
+
