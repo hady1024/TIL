@@ -19,4 +19,4 @@ for _ in range(n):
         cnt += 1
 print(cnt)
 
-# (스택 다시 확인)
+
