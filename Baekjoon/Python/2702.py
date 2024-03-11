@@ -17,7 +17,6 @@ for i in range(t):
     a, b = map(int, input().split())
     print(lcm(a, b), gcd(a, b))
 
-# 다시 풀어보기
 
 # 2
 def lcm(a, b):
