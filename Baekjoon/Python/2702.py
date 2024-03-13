@@ -28,4 +28,4 @@ for _ in range(int(input())):
     print(lcm(n, m), end=" ")
     print(math.gcd(n, m))
 
-# 다시 풀어봐야함..
+# 다시 풀어봐야함..(x22222)
