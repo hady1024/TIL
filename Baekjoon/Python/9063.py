@@ -9,4 +9,4 @@ for _ in range(int(input())):
     y_lst.append(y)
 print((max(x_lst) - min(x_lst)) * (max(y_lst) - min(y_lst)))
 
-# 다시 풀어보기
+
