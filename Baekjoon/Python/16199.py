@@ -16,4 +16,3 @@ print(man_old)
 print(count_old)
 print(year_old)
 
-# 다시 풀어봐야함;;
