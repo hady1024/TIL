@@ -10,4 +10,3 @@ for _ in range(T):
     sum += ord(i)
   print(sum) 
 
-# 다시 풀어보기
