@@ -19,3 +19,5 @@ print("Q2: %d" %(Q2))
 print("Q3: %d" %(Q3))
 print("Q4: %d" %(Q4))
 print("AXIS: %d" %(AXIS))
+
+# 다시 풀어보기
