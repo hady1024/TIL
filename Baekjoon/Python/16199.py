@@ -15,4 +15,3 @@ year_old = y2 - y1
 print(man_old)
 print(count_old)
 print(year_old)
-
