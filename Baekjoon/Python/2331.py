@@ -17,5 +17,3 @@ while True:
         cur_num = num
 
 print(len(nums))
-
-# 다시 풀어보기
