@@ -17,3 +17,5 @@ while len(arr) != 2:
     arr = temp
 
 print(*arr, sep="")
+
+# 다시 풀어보기
