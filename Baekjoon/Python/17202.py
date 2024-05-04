@@ -18,4 +18,4 @@ while len(arr) != 2:
 
 print(*arr, sep="")
 
-# 다시 풀어보기
+# 다시 풀어보기 x2 (잘 안됐음)
