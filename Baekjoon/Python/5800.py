@@ -11,4 +11,3 @@ for j in range(1,k+1):
     print(f'Class {j}')
     print(f'Max {max(s_student)}, Min {min(s_student)}, Largest gap {lg}')
 
-# 다시 해봐야함 안됐음;
