@@ -12,4 +12,3 @@ for i in range(1, len(N)):
         break
 print("YES" if ok else "NO")
 
-# 다시 풀어보기
