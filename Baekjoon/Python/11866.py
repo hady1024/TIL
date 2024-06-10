@@ -16,4 +16,4 @@ for i in range(N-1):
 print(result[N-1], end = "")
 print(">",end="")
 
-# 다시 풀어보기
+# 다시 풀어보기(x2 안됐음)
