@@ -29,39 +29,33 @@ def index(request):
 ```html
 <!-- pages/templates/index.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>두번째 앱의 index</h1>
+{% extends 'base.html' %} {% block content %}
+<h1>두번째 앱의 index</h1>
 {% endblock content %}
 ```
 
 ```html
 <!-- articles/templates/index.html -->
 
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1>만나서 반가워요!</h1>
+<a href="{% url 'greeting' %}">greeting</a>
+<a href="{% url 'dinner' %}">dinner</a>
+<a href="{% url 'throw' %}">throw</a>
 
-{% block content %}
-  <h1>만나서 반가워요!</h1>
-  <a href="{% url 'greeting' %}">greeting</a>
-  <a href="{% url 'dinner' %}">dinner</a>
-  <a href="{% url 'throw' %}">throw</a>
-
-  <a href="{% url 'index' %}">두번째 앱 index로 이동</a>
-{% endblock content %
+<a href="{% url 'index' %}">두번째 앱 index로 이동</a>
+{% endblock content %}
 ```
-
-
 
 - 2가지 문제가 발생..
 
 1. articles app index 페이지에 작성한 두번째 앱 index로 이동하는 하이퍼 링크를 클 릭 시 현재 페이지로 다시 이동
+
    - URL namespace
 
-2.  pages app의 index url (http://127.0.0.1:8000/pages/index/)로 직접 이동해도 articles app의 index 페이지가 출력됨
-   - Template namespace
+2. pages app의 index url (http://127.0.0.1:8000/pages/index/)로 직접 이동해도 articles app의 index 페이지가 출력됨
 
-
+- Template namespace
 
 # URL namespace
 
@@ -88,17 +82,11 @@ urlpatterns = [
 ]
 ```
 
-
-
 ### URL tag의 변화
 
-{% url 'index' %}  ---->  {% url 'articles:index' %}
-
-
+{% url 'index' %} ----> {% url 'articles:index' %}
 
 # Template namespace
-
-
 
 ### 개요
 
@@ -117,28 +105,15 @@ TEMPLATES = [
 ]
 ```
 
-
-
 ### 디렉토리 생성을 통해 물리적인 이름공간 구분
 
 - Django templates의 기본 경로에 app과 같은 이름의 폴더를 생성해 폴더 구조를 app_name/templates/app_name/ 형태로 변경
 - Django templates의 기본 경로 자체를 변경할 수는 없기 때문에 물리적으로 이름 공간을 만드는 것
 
 ```html
-articles/
-	templates/
-		articles/
-			index.html
-			...
-
-pages/
-	templates/
-		pages/
-			index.html
-			...
+articles/ templates/ articles/ index.html ... pages/ templates/ pages/
+index.html ...
 ```
-
-
 
 ### 템플릿 경로 변경
 
@@ -156,24 +131,16 @@ return render(request, 'articles/index.html')
 return render(request, 'pages/index.html')
 ```
 
-
-
 ### 반드시 Template namespace를 고려해야 할까?
 
 - 만약 단일 앱으로만 이루어진 프로젝트라면 상관없음
-- 여러 앱이 되었을 때에도 템플릿 파일 이름이 겹치지 않게 하면 되지만,  앱이 많아지면 대부분은 같은 이름의 템플릿 파일이 존재하기 마련
+- 여러 앱이 되었을 때에도 템플릿 파일 이름이 겹치지 않게 하면 되지만, 앱이 많아지면 대부분은 같은 이름의 템플릿 파일이 존재하기 마련
 
-
-
-# Naming  URL patterns
-
-
+# Naming URL patterns
 
 ### Naming URL patterns의 필요성
 
 - 만약 “index/”의 문자열 주소를 “new-index/”로 바꿔야 한다고 가정, 그렇다면 “index/” 주소를 사용했던 모든 곳을 찾아서 변경해야 하는 번거로움이 발생.
-
-
 
 ### Naming URL patterns
 
@@ -195,8 +162,6 @@ urlpatterns = [
 ]
 ```
 
-
-
 ### Built-in tag – “url”
 
 ```html
@@ -209,40 +174,31 @@ urlpatterns = [
 ```html
 <!-- catch.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>Catch</h1>
-  <h2>여기서 {{ message }}를 받았어!!</h2>
-   <a href="{% url 'throw' %}">다시 던지러</a>
+{% extends 'base.html' %} {% block content %}
+<h1>Catch</h1>
+<h2>여기서 {{ message }}를 받았어!!</h2>
+<a href="{% url 'throw' %}">다시 던지러</a>
 {% endblock content %}
 ```
 
 ```html
 <!-- throw.html -->
 
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1>Throw</h1>
+<form action="{% url 'catch' %}" method="GET">...</form>
 
-{% block content %}
-  <h1>Throw</h1>
-  <form action="{% url 'catch' %}" method="GET">
-    ...
-  </form>
-
-  <a href="{% url 'index' %}">뒤로</a>
+<a href="{% url 'index' %}">뒤로</a>
 {% endblock content %}
 ```
 
 ```html
 <!-- index.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  ...
-  <a href="{% url 'greeting' %}">greeting</a>
-  <a href="{% url 'dinner' %}">dinner</a>
-  <a href="{% url 'throw' %}">throw</a>
+{% extends 'base.html' %} {% block content %} ...
+<a href="{% url 'greeting' %}">greeting</a>
+<a href="{% url 'dinner' %}">dinner</a>
+<a href="{% url 'throw' %}">throw</a>
 {% endblock content %}
 
 <!-- dinner, greeting.html-->
@@ -250,22 +206,16 @@ urlpatterns = [
 <a href="{% url 'index' %}">뒤로</a>
 ```
 
-
-
 ### url 태그 출력 확인하기
 
 - 마지막으로 개발자 도구를 통해 url 태그가 URL 패턴 이름과 일치하는 절대 경로 주소를 반환하는 것을 확인해보기
-
-
 
 ### [참고] DRY 원칙
 
 - Don’t Repeat Yourself의 약어
 - 더 품질 좋은 코드를 작성하기 위해서 알고, 따르면 좋은 소프트웨어 원칙들 중 하나로 “소스 코드에서 동일한 코드를 반복하지 말자” 라는 의미
 - 동일한 코드가 반복된다는 것은 잠재적인 버그의 위협을 증가 시키고 반복되는 코드를 변경해야 하는 경우, 반복되는 모든 코드를 찾아서 수정해야 함
-- 이는 프로젝트 규모가 커질수록 애플리케이션의 유지 보수 비용이 커짐 
-
-
+- 이는 프로젝트 규모가 커질수록 애플리케이션의 유지 보수 비용이 커짐
 
 ### Django의 설계 철학 (Templates System)
 
@@ -276,8 +226,6 @@ urlpatterns = [
    - 대다수의 동적 웹사이트는 공통 header, footer, navbar 같은 사이트 공통 디자인을 갖음
    - Django 템플릿 시스템은 이러한 요소를 한 곳에 저장하기 쉽게 하여 중복 코드를 없애야 함
    - 템플릿 상속의 기초가 되는 철학
-
-
 
 ### Framework의 성격
 
@@ -291,8 +239,6 @@ urlpatterns = [
   - 이는 개발자들이 특정 작업을 완수하는데 가장 적절한 도구들을 이용할 수 있는 자유도가 높음
   - 하지만 개발자 스스로가 그 도구들을 찾아야 한다는 수고가 필요
 
-
-
 ### Django Framework의 성격
 
 - '다소 독선적'
@@ -302,8 +248,6 @@ urlpatterns = [
 - 우리가 온전히 만들고자 하는 것에만 집중할 수 있게 도와주는 것
 - "수레바퀴를 다시 만들지 말라"
 
-
-
 # Database
 
 ### Database
@@ -311,14 +255,10 @@ urlpatterns = [
 - 체계화된 데이터의 모임
 - 검색 및 구조화 같은 작업을 보다 쉽게 하기 위해 조직화된 데이터를 수집하는 저장 시스템
 
-
-
 ### Database 기본 구조
 
 1. 스키마(Schema)
 2. 테이블(Table)
-
-
 
 ### 스키마(Schema)
 
@@ -332,21 +272,18 @@ urlpatterns = [
 |  age   |   INT    |
 | email  |   TEXT   |
 
-
-
 ### 테이블(Table)
 
 - 필드와 레코드를 사용해 조직된 데이터 요소들의 집합
 - 관계(Relation)라고도 부름
 
-
-
 1.  필드(field)
-   - 속성, 컬럼(Column)
+
+- 속성, 컬럼(Column)
+
 2.  레코드(record)
-   - 튜플, 행(Row)
 
-
+- 튜플, 행(Row)
 
 ### 필드(field)
 
@@ -354,14 +291,10 @@ urlpatterns = [
 - 각 필드에는 고유한 데이터 형식이 지정됨
   - INT, TEXT 등
 
-
-
 ### 레코드(record)
 
 - 튜플 혹은 행(row)
 - 테이블의 데이터는 레코드에 저장됨
-
-
 
 ### PK (Primary Key)
 
@@ -374,20 +307,14 @@ urlpatterns = [
   - 데이터베이스에 동일한 이름, 나이를 가진 사람들의 데이터는 존재할 수 있지만 각 사람들이 가진 주민등록번 호는 절대 같을 수 없음
   - 주민등록번호는 그 사람을 나타내는 고유한 값으로써 사용할 수 있음
 
-
-
 ### 쿼리(Query)
 
 - 데이터를 조회하기 위한 명령어
 - 조건에 맞는 데이터를 추출하거나 조작하는 명령어
   (주로 테이블형 자료구조에서 사용)
-- "Query를 날린다."  -----> "데이터베이스를 조작한다"
-
-
+- "Query를 날린다." -----> "데이터베이스를 조작한다"
 
 # Model
-
-
 
 ### 개요
 
@@ -398,14 +325,10 @@ urlpatterns = [
   - 모델 클래스 1개 == 데이터베이스 테이블 1개
 - Model을 통해 데이터 관리
 
-
-
 ### [참고] 매핑
 
 - Mapping
 - 하나의 값을 다른 값으로 대응시키는 것
-
-
 
 ### Model 작성하기 (1/2)
 
@@ -426,8 +349,6 @@ INSTALLED_APPS = [
 ]
 ```
 
-
-
 ### Model 작성하기 (2/2)
 
 - models.py 작성
@@ -441,8 +362,6 @@ class Article(models.Model):
 	title = models.CharField(max_length=10)
 	content = models.TextField()
 ```
-
-
 
 ### Model 이해하기 (1/4)
 
@@ -459,8 +378,6 @@ class Article(models.Model):
 	content = models.TextField()
 ```
 
-
-
 ### Model 이해하기 (2/4)
 
 - models 모듈을 통해 어떠한 타입의 DB 필드(컬럼)을 정의할 것인지 정의
@@ -475,8 +392,6 @@ class Article(models.Model):
 	content = models.TextField()
 ```
 
-
-
 ### Model 이해하기 (3/4)
 
 1. 클래스 변수(속성)명
@@ -490,14 +405,10 @@ class Article(models.Model):
 	content = models.TextField()
 ```
 
-
-
 ### Model 이해하기 (4/4)
 
 2. 클래스 변수 값 (models 모듈의 Field 클래스)
    - DB 필드의 데이터 타입
-
-
 
 ### Django Model Field
 
@@ -506,27 +417,21 @@ class Article(models.Model):
   - DataField(), CharField(), IntegerField() 등
   - [[Model field reference | Django documentation | Django (djangoproject.com)](https://docs.djangoproject.com/en/3.2/ref/models/fields/)]
 
-
-
 ### 사용한 모델 필드 알아보기 (1/2)
 
-- CharField(max_length=None, **options)
+- CharField(max_length=None, \*\*options)
   - 길이의 제한이 있는 문자열을 넣을 때 사용
   - max_length
     - 필드의 최대 길이(문자)
     - CharField의 필수 인자
     - 데이터베이스와 Django의 유효성 검사(값을 검증하는 것)에서 활용됨
 
-
-
 ### 사용한 모델 필드 알아보기 (2/2)
 
-- TextField(**options)
+- TextField(\*\*options)
   - 글자의 수가 많을 때 사용
-  - max_length 옵션 작성 시 사용자 입력 단계에서는 반영 되지만,  모델과 데이터베이스 단계에는 적용되지 않음 (CharField를 사용해야 함)
+  - max_length 옵션 작성 시 사용자 입력 단계에서는 반영 되지만, 모델과 데이터베이스 단계에는 적용되지 않음 (CharField를 사용해야 함)
     - 실제로 저장될 때 길이에 대한 유효성을 검증하지 않음
-
-
 
 ### 데이터베이스 스키마
 
@@ -538,16 +443,12 @@ class Article(models.Model):
 |  title  | VARCHAR(10) |
 | content |    TEXT     |
 
-
-
 # Migrations
 
 ### Migrations 관련 주요 명령어
 
 1. makemigrations
 2. migrate
-
-
 
 ### makemigrations (1/2)
 
@@ -557,19 +458,15 @@ class Article(models.Model):
 $ python manage.py makemigrations
 ```
 
-
-
 ### makemigrations (2/2)
 
 - 명령어 실행 후 migrations/0001_initial.py가 생성된 것을 확인
 - "파이썬으로 작성된 설계도”
 
-
-
-### migrate 
+### migrate
 
 - makemigrations로 만든 설계도를 실제 데이터베이스에 반영하는 과정
-   (db.sqlite3 파일에 반영)
+  (db.sqlite3 파일에 반영)
 - 결과적으로 모델의 변경사항과 데이터베이스를 동기화
 
 ```
@@ -577,8 +474,6 @@ $ python manage.py migrate
 ```
 
 - 설계도(migration)를 실제 db.sqlite3 DB 파일에 반영
-
-
 
 ### [참고] Migrations 기타 명령어
 
@@ -589,9 +484,7 @@ $ python manage.py showmigrations
 ```
 
 - migrations 파일들이 migrate 됐는지 안됐는지 여부를 확인하는 용도
-- [X] 표시가 있으면 migrate가 완료되었음을 의미
-
-
+- [x] 표시가 있으면 migrate가 완료되었음을 의미
 
 2. sqlmigrate
 
@@ -601,8 +494,6 @@ $ python manage.py sqlmigrate articles 0001
 
 - 해당 migrations 파일이 SQL 문으로 어떻게 해석 될 지 미리 확인 할 수 있음
 
-
-
 # 추가 필드 정의
 
 ### Model 변경사항 반영하기 (1/6)
@@ -610,7 +501,7 @@ $ python manage.py sqlmigrate articles 0001
 - models.py에 변경사항이 생겼을 때 어떤 과정의 migration이 필요할까?
 - 추가 모델 필드 작성 후 다시 한번 makemigrations 진행
 
-``` python
+```python
 # articles/models.py
 
 class Article(models.Model):
@@ -624,8 +515,6 @@ class Article(models.Model):
 $ python manage.py makemigrations
 ```
 
-
-
 ### Model 변경사항 반영하기 (2/6)
 
 - 기존에 id, title, content 필드를 가진 테이블에 2개의 필드가 추가되는 상황
@@ -633,15 +522,13 @@ $ python manage.py makemigrations
   - Django는 우리에게 추가되는 컬럼에 대한 기본 값을 설정해야 하니 어떤 값을 설정할 것인지를 물어보는 과정을 진행
 
 ```
-You are trying to add the field 'created_at' with 'auto_now_add=True' to article without a default; the database needs 
+You are trying to add the field 'created_at' with 'auto_now_add=True' to article without a default; the database needs
 something to populate existing rows.
 
  1) Provide a one-off default now (will be set on all existing rows)
  2) Quit, and let me add a default in models.py
-Select an option: 
+Select an option:
 ```
-
-
 
 ### Model 변경사항 반영하기 (3/6)
 
@@ -651,7 +538,7 @@ Select an option:
 - “1”을 입력 후 Enter (created_at 필드에 대한 default 값 설정)
 
 ```
-You are trying to add the field 'created_at' with 'auto_now_add=True' to article without a default; the database needs 
+You are trying to add the field 'created_at' with 'auto_now_add=True' to article without a default; the database needs
 something to populate existing rows.
 
  1) Provide a one-off default now (will be set on all existing rows)
@@ -659,12 +546,10 @@ something to populate existing rows.
 Select an option: 1
 ```
 
-
-
 ### Model 변경사항 반영하기 (4/6)
 
 - 다음 화면에서 아무것도 입력하지 않고 Enter를 입력하면
-  Django에서 기본적으로 파이썬의 timezone 모듈의 now 메서드 반환 값을 
+  Django에서 기본적으로 파이썬의 timezone 모듈의 now 메서드 반환 값을
   기본 값으로 사용하도록 해줌
 
 ```
@@ -675,13 +560,9 @@ Type 'exit' to exit this prompt
 [default: timezone.now] >>>
 ```
 
-
-
 ### Model 변경사항 반영하기 (5/6)
 
 - 새로운 설계도(마이그레이션 파일)가 만들어 진 것을 확인
-
-
 
 ### Model 변경사항 반영하기 (6/6)
 
@@ -692,8 +573,6 @@ Type 'exit' to exit this prompt
 $ python manage.py migrate
 ```
 
-
-
 ### DateTimeField()
 
 - Python의 datetime.datetime 인스턴스로 표시되는 날짜 및 시간을 값으로 사용하는 필드
@@ -701,31 +580,29 @@ $ python manage.py migrate
 - 선택 인자
 
 1.  auto_now_add
-   - 최초 생성 일자 (Useful for creation of timestamps)
-   - 데이터가 실제로 만들어질 때 현재 날짜와 시간으로 자동으로 초기화 되도록 함
+
+- 최초 생성 일자 (Useful for creation of timestamps)
+- 데이터가 실제로 만들어질 때 현재 날짜와 시간으로 자동으로 초기화 되도록 함
+
 2.  auto_now
-   - 최종 수정 일자 (Useful for “last-modified” timestamps)
-   - 데이터가 수정될 때마다 현재 날짜와 시간으로 자동으로 갱신되도록 함
 
-
+- 최종 수정 일자 (Useful for “last-modified” timestamps)
+- 데이터가 수정될 때마다 현재 날짜와 시간으로 자동으로 갱신되도록 함
 
 ### 반드시 기억해야 할 migration 3단계
 
 1.  models.py에서 변경사항이 발생하면
 2.  migration 생성
-   - makemigrations
+
+- makemigrations
+
 3.  DB 반영 (모델과 DB의 동기화)
-   - migrate
 
+- migrate
 
-
-``` 중간에 번역을 담당하는 것이 ORM```
-
-
+` 중간에 번역을 담당하는 것이 ORM`
 
 # ORM
-
-
 
 ### 개요
 
@@ -736,13 +613,9 @@ $ python manage.py migrate
 - Django는 내장 Django ORM을 사용
 - 한 마디로 SQL을 사용하지 않고 데이터베이스를 조작할 수 있게 만들어주는 매개체
 
-
-
 ### ORM 예시
 
 ![cab92d2e5e11eebd7064b854b8744115](Django05.assets/cab92d2e5e11eebd7064b854b8744115.png)
-
-
 
 ### ORM 장단점
 
@@ -752,19 +625,13 @@ $ python manage.py migrate
 - 단점
   - ORM 만으로 세밀한 데이터베이스 조작을 구현하기 어려운 경우가 있음
 
-
-
 ### ORM을 사용하는 이유
 
 - “생산성”
 - 현시대 개발에서 가장 중요한 키워드는 바로 생산성
 - 우리는 DB를 객체(object)로 조작하기 위해 ORM을 사용할 것
 
-
-
 # QuerySet API
-
-
 
 ### 외부 라이브러리 설치 및 설정
 
@@ -785,15 +652,11 @@ INSTALLED_APPS = [
 ]
 ```
 
-
-
 - 패키지 목록 업데이트
 
 ```
 $ pip freeze > requirements.txt
 ```
-
-
 
 ### [참고] IPython & django-extensions
 
@@ -804,15 +667,11 @@ $ pip freeze > requirements.txt
   - Django 확장 프로그램 모음
   - shell_plus, graph model 등 다양한 확장 기능 제공
 
-
-
 ### [참고] Shell
 
 - 운영체제 상에서 다양한 기능과 서비스를 구현하는 인터페이스를 제공하는 프로그램
 - Shell(껍데기), 사용자와 운영 체제의 내부사이의 인터페이스를 감싸는 층이기 때문에 그러한 이름이 붙음
 - “사용자 <–> 셸 <–> 운영체제”
-
-
 
 ### [참고] Python Shell
 
@@ -821,8 +680,6 @@ $ pip freeze > requirements.txt
 - 인터렉티브 혹은 대화형 shell 이라고 부름
 - Python 명령어를 실행하여 그 결과를 바로 제공
 
-
-
 ```
 # git bash (windows)
 $ python -i
@@ -830,8 +687,6 @@ $ python -i
 # zsh (macOS)
 $ python
 ```
-
-
 
 ### Django shell
 
@@ -850,7 +705,7 @@ $ python manage.py shell
 $ python manage.py shell_plus
 ```
 
-``` shell
+```shell
 • Django shell 실행
 $ python manage.py shell_plus
 
@@ -869,7 +724,7 @@ from django.db.models import Avg, Case, Count, F, Max, Min, Prefetch, Q, Sum, Wh
 from django.utils import timezone
 from django.urls import reverse
 from django.db.models import Exists, OuterRef, Subquery
-Python 3.9.13 (main, Aug 24 2022, 22:54:29) 
+Python 3.9.13 (main, Aug 24 2022, 22:54:29)
 Type 'copyright', 'credits' or 'license' for more information
 IPython 8.4.0 -- An enhanced Interactive Python. Type '?' for help.
 
@@ -881,20 +736,14 @@ In [1]: Article.objects.all()
 Out[1]: <QuerySet []>
 ```
 
-
-
 ### Database API
 
 - Django가 제공하는 ORM을 사용해 데이터베이스를 조작하는 방법
 - Model을 정의하면 데이터를 만들고 읽고 수정하고 지울 수 있는 API를 제공
 
-
-
 ### Database API 구문
 
 ![images_swhan9404_post_e2610e96-e6cc-43da-b78c-d60ee2396101_image-20210310110854053](Django05.assets/images_swhan9404_post_e2610e96-e6cc-43da-b78c-d60ee2396101_image-20210310110854053.png)
-
-
 
 ### Objects manager
 
@@ -903,16 +752,12 @@ Out[1]: <QuerySet []>
 - 이 Manager를 통해 특정 데이터를 조작할 수 있음
 - DB를 Python class로 조작할 수 있도록 여러 메서드를 제공하는 manager
 
-
-
 ### Query
 
 - 데이터베이스에 특정한 데이터를 보여 달라는 요청
   - “쿼리문을 작성한다.”
   - → 원하는 데이터를 얻기 위해 데이터베이스에 요청을 보낼 코드를 작성한다.
 - 이 때, 파이썬으로 작성한 코드가 ORM의 의해 SQL로 변환되어 데이터베이스에 전달되며, 데이터베이스의 응답 데이터를 ORM이 QuerySet이라는 자료 형태로 변환하여 우리에게 전달
-
-
 
 ### QuerySet
 
@@ -922,28 +767,20 @@ Out[1]: <QuerySet []>
 - objects manager를 사용하여 복수의 데이터를 가져오는 queryset method를 사용 할 때 반환되는 객체
 - 단, 데이터베이스가 단일한 객체를 반환 할 때는 QuerytSet이 아닌 모델(Class)의 인 스턴스로 반환됨
 
-
-
 ### QuerySet API
 
 - QuerySet과 상호작용하기 위해 사용하는 도구 (메서드, 연산자 등)
 
 ![cab92d2e5e11eebd7064b854b8744115](Django05.assets/cab92d2e5e11eebd7064b854b8744115.png)
 
-
-
 # QuerySet API 익히기
 
 - Queryset API를 활용해 데이터를 생성하고, 읽고, 수정하고 삭제해보기 (CRUD)
-
-
 
 ### CRUD
 
 - Create / Read / Update / Delete (생성, 조회, 수정, 삭제)
 - 대부분의 컴퓨터 소프트웨어가 가지는 기본적인 데이터 처리 기능 4가지를 묶어서 일컫는 말
-
-
 
 # CREATE
 
@@ -952,13 +789,16 @@ Out[1]: <QuerySet []>
 - 첫번째 방법
 
 1.  article = Article()
-   - 클래스를 통한 인스턴스 생성
+
+- 클래스를 통한 인스턴스 생성
+
 2.  article.title
-   - 클래스 변수명과 같은 이름의 인스턴스 변수를 생성 후 값 할당
+
+- 클래스 변수명과 같은 이름의 인스턴스 변수를 생성 후 값 할당
+
 3.  article.save()
-   - 인스턴스로 save 메서드 호출
 
-
+- 인스턴스로 save 메서드 호출
 
 ### 첫번째 방법 (1/3)
 
@@ -977,11 +817,9 @@ Out[1]: <QuerySet []>
 >>> article
 <Article: Article object (None)>
 
->>> Article.objects.all() 
+>>> Article.objects.all()
 <QuerySet []>
 ```
-
-
 
 ### 첫번째 방법 (2/3)
 
@@ -1003,8 +841,6 @@ Out[1]: <QuerySet []>
 
 > DB 테이블의 컬럼 이름이 id 임에도 pk를 사용할 수 있는 이유는 Django가 제공하는 shortcut이기 때문
 
-
-
 ### 첫번째 방법 (3/3)
 
 ```shell
@@ -1017,8 +853,6 @@ Out[1]: <QuerySet []>
 >>> article.created_at
 datetime.datetime(2022, 8, 21, 2, 43, 56, 49345, tzinfo=<UTC>)
 ```
-
-
 
 ### 두번째 방법
 
@@ -1049,8 +883,6 @@ datetime.datetime(2022, 8, 21, 2, 43, 56, 49345, tzinfo=<UTC>)
 'django!’
 ```
 
-
-
 ### 세번째 방법
 
 - QuerySet API 중 create() 메서드 활용
@@ -1062,8 +894,6 @@ datetime.datetime(2022, 8, 21, 2, 43, 56, 49345, tzinfo=<UTC>)
 <Article: Article object (3)>
 ```
 
-
-
 ### .save()
 
 - “Saving object”
@@ -1072,8 +902,6 @@ datetime.datetime(2022, 8, 21, 2, 43, 56, 49345, tzinfo=<UTC>)
   - id 값은 Django가 아니라 데이터베이스에서 계산되기 때문
 - 단순히 모델 클래스를 통해 인스턴스를 생성하는 것은 DB에 영향을 미치지 않기 때문 에 반드시 save를 호출해야 테이블에 레코드가 생성됨
 
-
-
 # READ
 
 ### 개요
@@ -1081,10 +909,8 @@ datetime.datetime(2022, 8, 21, 2, 43, 56, 49345, tzinfo=<UTC>)
 - QuerySet API method를 사용해 데이터를 다양하게 조회하기
 - QuerySet API method는 크게 2가지로 분류됨
 
-		1.   Methods that “return new querysets”
-		1.   Methods that “do not return querysets”
-
-
+      1.   Methods that “return new querysets”
+      1.   Methods that “do not return querysets”
 
 ### all()
 
@@ -1096,12 +922,10 @@ datetime.datetime(2022, 8, 21, 2, 43, 56, 49345, tzinfo=<UTC>)
 <QuerySet [<Article: Article object (1)>, <Article: Article object (2)>, <Article: Article object (3)>]>
 ```
 
-
-
 ### get()
 
 - 단일 데이터 조회
-- 객체를 찾을 수 없으면 DoesNotExist 예외를 발생시키고,  둘 이상의 객체를 찾으면 MultipleObjectsReturned 예외를 발생시킴
+- 객체를 찾을 수 없으면 DoesNotExist 예외를 발생시키고, 둘 이상의 객체를 찾으면 MultipleObjectsReturned 예외를 발생시킴
 - 위와 같은 특징을 가지고 있기 때문에 primary key와 같이 고유성(uniqueness)을 보장하는 조회에서 사용해야 함
 
 ```shell
@@ -1114,8 +938,6 @@ DoesNotExist: Article matching query does not exist.
 >>> Article.objects.get(content='django!')
 MultipleObjectsReturned: get() returned more than one Article -- it returned 2!
 ```
-
-
 
 ### filter()
 
@@ -1132,9 +954,7 @@ MultipleObjectsReturned: get() returned more than one Article -- it returned 2!
 <QuerySet [<Article: Article object (1)>]>
 ```
 
->  조회된 객체가 없거나 1개여도 QuerySet을 반환
-
-
+> 조회된 객체가 없거나 1개여도 QuerySet을 반환
 
 ### Field lookups
 
@@ -1149,8 +969,6 @@ MultipleObjectsReturned: get() returned more than one Article -- it returned 2!
 # "content 컬럼에 'dj'가 포함된 모든 데이터 조회"
 Article.objects.filter(content__contains='dj')
 ```
-
-
 
 # UPDATE
 
@@ -1171,8 +989,6 @@ Article.objects.filter(content__contains='dj')
 'byebye'
 ```
 
-
-
 # DELETE
 
 ### Delete 과정
@@ -1192,9 +1008,7 @@ Article.objects.filter(content__contains='dj')
 DoesNotExist: Article matching query does not exist.
 ```
 
-
-
-# CRUD with  view functions
+# CRUD with view functions
 
 ### base 템플릿 작성
 
@@ -1205,20 +1019,17 @@ DoesNotExist: Article matching query does not exist.
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- bootstrap CSS CDN -->
-  <title>Document</title>
-</head>
-<body>
-  <div class="container">
-    {% block content %}
-    {% endblock content %}
-  </div>
-  <!-- bootstrap JS CDN -->
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- bootstrap CSS CDN -->
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">{% block content %} {% endblock content %}</div>
+    <!-- bootstrap JS CDN -->
+  </body>
 </html>
 ```
 
@@ -1232,8 +1043,6 @@ DoesNotExist: Article matching query does not exist.
 		...
 ]
 ```
-
-
 
 - url 분리 및 연결
 
@@ -1282,14 +1091,10 @@ def index(request):
 ```html
 <!-- templates/articles/index.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>Articles</h1>
+{% extends 'base.html' %} {% block content %}
+<h1>Articles</h1>
 {% endblock content %}
 ```
-
-
 
 # READ 1 (index page)
 
@@ -1314,25 +1119,20 @@ def index(request):
 ```html
 <!--templates/articles/index.html-->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>Articles</h1>
-  <hr>
-  {% for article in articles %}
-	<p>글 번호: {{ article.pk }}</p>
-	<p>글 제목: {{ article.title }}</p>
-	<p>글 내용: {{ article.content }}</p>
-	<hr>
-  {% endfor %}
-{% endblock content %}
+{% extends 'base.html' %} {% block content %}
+<h1>Articles</h1>
+<hr />
+{% for article in articles %}
+<p>글 번호: {{ article.pk }}</p>
+<p>글 제목: {{ article.title }}</p>
+<p>글 내용: {{ article.content }}</p>
+<hr />
+{% endfor %} {% endblock content %}
 ```
-
-
 
 # CREATE
 
-### 개요 
+### 개요
 
 - CREATE 로직을 구현하기 위해서는 몇 개의 view 함수가 필요할까?
   - 사용자의 입력을 받을 페이지를 렌더링 하는 함수 1개
@@ -1359,23 +1159,19 @@ def new(request):
 ```html
 <!-- templates/articles/new.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>NEW</h1>
-  <form action="#" method="GET">
-	<label for="title">Title: </label>
-	<input type="text" name="title"><br>
-	<label for="content">Content: </label>
-	<textarea name="content"></textarea><br>
-	<input type="submit">
-  </form>
-  <hr>
-  <a href="{% url 'articles:index' %}">[back]</a>
+{% extends 'base.html' %} {% block content %}
+<h1>NEW</h1>
+<form action="#" method="GET">
+  <label for="title">Title: </label>
+  <input type="text" name="title" /><br />
+  <label for="content">Content: </label>
+  <textarea name="content"></textarea><br />
+  <input type="submit" />
+</form>
+<hr />
+<a href="{% url 'articles:index' %}">[back]</a>
 {% endblock content %}
 ```
-
-
 
 ### New
 
@@ -1384,17 +1180,12 @@ def new(request):
 ```html
 <!-- templates/articles/index.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>Articles</h1>
-  <a href="{% url 'articles:new' %}">NEW</a>
-  <hr>
-  ...
-{% endblock content %}
+{% extends 'base.html' %} {% block content %}
+<h1>Articles</h1>
+<a href="{% url 'articles:new' %}">NEW</a>
+<hr />
+... {% endblock content %}
 ```
-
-
 
 ### Create (1/3)
 
@@ -1409,28 +1200,26 @@ urlpatterns = [
 
 ```py
 def create(request):
-	title = request.GET.get('title') 
+	title = request.GET.get('title')
 	content = request.GET.get('content')
-    
+
 	# 1.
 	# article = Article()
 	# article.title = title
 	# article.content = content
 	# article.save()
-    
+
 	# 2.
 	article = Article(title=title, content=content)
 	article.save()
-    
-	# 3. 
+
+	# 3.
 	# Article.objects.create(title=title, content=content)
-    
+
 	return render(request, 'articles/create.html')
 ```
 
 > 데이터를 생성하는 3가지 방법
-
-
 
 ### Create (2/3)
 
@@ -1439,33 +1228,27 @@ def create(request):
 ```html
 <!-- templates/articles/create.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>성공적으로 글이 작성되었습니다.</h1>
+{% extends 'base.html' %} {% block content %}
+<h1>성공적으로 글이 작성되었습니다.</h1>
 {% endblock content %}
 ```
 
 ```html
 <!-- templates/articles/new.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>NEW</h1>
-  <form action="{% url 'articles:create' %}" method="GET">
-	<label for="title">Title: </label>
-	<input type="text" name="title"><br>
-	<label for="content">Content: </label>
-	<textarea name="content" cols="30" rows="5"></textarea><br>
-	<input type="submit">
-  </form>
-  <hr>
-  <a href="{% url 'articles:index' %}">[back]</a>
+{% extends 'base.html' %} {% block content %}
+<h1>NEW</h1>
+<form action="{% url 'articles:create' %}" method="GET">
+  <label for="title">Title: </label>
+  <input type="text" name="title" /><br />
+  <label for="content">Content: </label>
+  <textarea name="content" cols="30" rows="5"></textarea><br />
+  <input type="submit" />
+</form>
+<hr />
+<a href="{% url 'articles:index' %}">[back]</a>
 {% endblock content %}
 ```
-
-
 
 ### Create (3/3)
 
@@ -1479,14 +1262,12 @@ def create(request):
 	return render(request, 'articles/index.html')
 ```
 
-
-
 ### Django shortcut function – “redirect()” (1/2)
 
 - 인자에 작성된 곳으로 요청을 보냄
 - 사용 가능한 인자
 
-1.  view name (URL pattern name) 
+1.  view name (URL pattern name)
 
 ```python
 return redirect('articles:index')
@@ -1498,8 +1279,6 @@ return redirect('articles:index')
 return redirect('/articles/')
 ```
 
-
-
 ### Django shortcut function – “redirect()” (2/2)
 
 - 동작 확인 후 불필요해진 create.html는 삭제
@@ -1510,17 +1289,15 @@ return redirect('/articles/')
 from django.shortcuts import render, redirect
 
 def create(request):
-	title = request.GET.get('title') 
+	title = request.GET.get('title')
 	content = request.GET.get('content')
-    
+
 	article = Article(title=title, content=content)
 	article.save()
-    
+
 	# return redirect('/articles/')
 	return redirect('articles:index')
 ```
-
-
 
 ### redirect 동작 이해하기 (1/2)
 
@@ -1531,26 +1308,20 @@ def create(request):
 [06/Jun/2022 18:43:37] "GET /articles/ HTTP/1.1" 200 1064
 ```
 
-
-
 ### redirect 동작 이해하기 (2/2)
 
 - 동작 원리
 
 1.  클라이언트가 create url로 요청을 보냄
 2.  create view 함수의 redirect 함수가 302 status code를 응답
-3.  응답 받은 브라우저는 redirect 인자에 담긴 주소(index)로 
+3.  응답 받은 브라우저는 redirect 인자에 담긴 주소(index)로
     사용자를 이동시키기 위해 index url로 Django에 재요청
 4.  index page를 정상적으로 응답 받음 (200 status code)
-
-
 
 ### [참고] 302 Found
 
 - HTTP response status code 중 하나
 - 해당 상태 코드를 응답 받으면 브라우저는 사용자를 해당 URL의 페이지로 이동 시킴
-
-
 
 ### HTTP response status code
 
@@ -1563,8 +1334,6 @@ def create(request):
 4.  Client error responses (4xx)
 5.  Server error responses (5xx)
 
-
-
 ### HTTP method GET 재검토
 
 - 현재는 게시글이 작성될 때 /articles/create/?title=11&content=22 와 같은 URL로 요청이 보내짐
@@ -1572,13 +1341,9 @@ def create(request):
 - 하지만 현재 요청은 데이터를 조회하는 것이 아닌 작성을 원하는 요청
 - GET이 아닌 다른 HTTP method를 알아보기
 
+### HTTP request method (1/3)
 
-
-### HTTP request method (1/3) 
-
-- HTTP는 request method를 정의하여,  주어진 리소스에 수행하길 원하는 행동을 나타냄
-
-
+- HTTP는 request method를 정의하여, 주어진 리소스에 수행하길 원하는 행동을 나타냄
 
 ### HTTP request method (2/3)
 
@@ -1588,9 +1353,7 @@ def create(request):
   - DB에 변화를 주지 않음
   - CRUD에서 R 역할을 담당
 
-
-
-# HTTP request method (3/3) 
+# HTTP request method (3/3)
 
 - POST
   - 서버로 데이터를 전송할 때 사용
@@ -1599,22 +1362,16 @@ def create(request):
   - GET의 쿼리 스트링 파라미터와 다르게 URL로 데이터를 보내지 않음
   - CRUD에서 C/U/D 역할을 담당
 
-
-
 ### POST method 적용하기 (1/5)
 
 - 실제 네이버에서 로그인 부분을 확인해보기
 - 로그인 부분에서 GET이 아닌 POST를 사용하고 있음
-
-
 
 ### POST method 적용하기 (2/5)
 
 - 그럼 왜 검색에서는 GET을 사용할까?
   - 검색은 서버에 영향을 미치는 것이 아닌 특정 데이터를 조회만 하는 요청이기 때문
   - 특정 페이지를 조회하는 요청을 보내는 HTML의 a tag 또한 GET을 사용
-
-
 
 ### POST method 적용하기 (3/5)
 
@@ -1623,19 +1380,13 @@ def create(request):
 ```html
 <!-- templates/articles/new.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1 class="text-center">NEW</h1>
-  <form action="{% url 'articles:create' %}" method="POST">
-  ...
-  </form>
-  <hr>
-  <a href="{% url 'articles:index' %}">[back]</a>
+{% extends 'base.html' %} {% block content %}
+<h1 class="text-center">NEW</h1>
+<form action="{% url 'articles:create' %}" method="POST">...</form>
+<hr />
+<a href="{% url 'articles:index' %}">[back]</a>
 {% endblock content %}
 ```
-
-
 
 ### POST method 적용하기 (4/5)
 
@@ -1646,12 +1397,8 @@ Forbidden (CSRF cookie not set.): /articles/create/
 [06/Jun/2022 19:27:28] "POST /articles/create/ HTTP/1.1" 403 2870
 ```
 
-
-
 - 403 Forbidden 응답을 받았지만 이는 나중에 확인하고 요청된 URL(/articles/create/)을 확인
   - 개발자도구 - NETWORK 탭 – Payload 탭의 Form-Data 확인
-
-
 
 ### POST method 적용하기 (5/5)
 
@@ -1661,33 +1408,27 @@ Forbidden (CSRF cookie not set.): /articles/create/
 # articles/views.py
 
 def create(request):
-	title = request.POST.get('title') 
+	title = request.POST.get('title')
 	content = request.POST.get('content')
-    
-	article = Article(title=title, content=content) 
+
+	article = Article(title=title, content=content)
 	article.save()
 	return render(request, 'articles/create.html')
 ```
-
-
 
 ### HTTP methods 정리
 
 - GET은 단순히 조회하려는 경우 & POST는 서버나 DB에 변경을 요청하는 경우
 - TMDB API나 다른 API 문서에서 봤던 요청 예시 문서에서 등장했던 친구들이 바로 HTTP methods 였음
 
-
-
 ### [참고] 403 Forbidden
 
 - 서버에 요청이 전달되었지만, 권한 때문에 거절되었다는 것을 의미
 - 서버에 요청은 도달했으나 서버가 접근을 거부할 때 반환됨
-- 즉, 게시글을 작성할 권한이 없다 
+- 즉, 게시글을 작성할 권한이 없다
   → Django 입장에서는 “작성자가 누구인지 모르기 때문에 함부로 작성할 수 없다”라는 의미
 
 - 모델(DB)을 조작하는 것은 단순 조회와 달리 최소한의 신원 확인이 필요하기 때문
-
-
 
 ### CSRF
 
@@ -1698,8 +1439,6 @@ def create(request):
   - 해커가 옥X 운영자에게 CSRF 코드가 포함된 가짜 사이트가 담긴 이메일을 보냄
   - 관리자는 해당 사이트에 정보를 입력하여 관련 정보가 해커에게 보내졌고, 해커는 옥X 사이트의 관리자 권한을 얻어냄 (당시 1860만건 유출)
 
-
-
 ### CSRF 공격 방어
 
 - “Security Token 사용 방식 (CSRF Token)”
@@ -1707,8 +1446,6 @@ def create(request):
   - 이후 서버에서 요청을 받을 때마다 전달된 token 값이 유효한지 검증
   - 일반적으로 데이터 변경이 가능한 POST, PATCH, DELETE Method 등에 적용
   - Django는 DTL에서 csrf_token 템플릿 태그를 제공
-
-
 
 ### csrf_token 템플릿 태그 (1/2)
 
@@ -1720,8 +1457,6 @@ def create(request):
 - 템플릿에서 내부 URL로 향하는 Post form을 사용하는 경우에 사용
   - 외부 URL로 향하는 POST form에 대해서는 CSRF 토큰이 유출되어 취약성을 유발할 수 있기 때문에 사용해서는 안됨
 
-
-
 ### csrf_token 템플릿 태그 (2/2)
 
 - 태그 작성 후 확인하기
@@ -1730,27 +1465,20 @@ def create(request):
 ```html
 <!-- templates/articles/new.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>NEW</h1>
-  <form action="{% url 'articles:create' %}" method="POST">
-	{% csrf_token %}
-	...
-  </form>
-  <hr>
-  <a href="{% url 'articles:index' %}">[back]</a>
+{% extends 'base.html' %} {% block content %}
+<h1>NEW</h1>
+<form action="{% url 'articles:create' %}" method="POST">
+  {% csrf_token %} ...
+</form>
+<hr />
+<a href="{% url 'articles:index' %}">[back]</a>
 {% endblock content %}
 ```
-
-
 
 ### csrf_token 템플릿 태그 정리
 
 - 마지막으로 게시글을 작성하고 문제없이 저장되는지 확인해보기
 - "csrf_token 은 해당 POST 요청이 내가 보낸 것 인지를 검증하는것"
-
-
 
 # READ 2 (detail page)
 
@@ -1761,8 +1489,6 @@ def create(request):
   - 글의 번호(PK)를 활용해서 하나의 뷰 함수와 템플릿 파일로 대응
 - 무엇을 활용할 수 있을까?
   - Variable Routing
-
-
 
 ### urls
 
@@ -1777,12 +1503,10 @@ urlpatterns = [
 ]
 ```
 
-
-
 ### views
 
-- Article.objects.get(pk=pk)에서 
-  오른쪽 pk는 variable routing을 통해 받은 pk, 
+- Article.objects.get(pk=pk)에서
+  오른쪽 pk는 variable routing을 통해 받은 pk,
   왼쪽 pk는 DB에 저장된 레코드의 id 컬럼
 
 ```python
@@ -1797,39 +1521,32 @@ def detail(request, pk):
 ```
 
 ```html
-
 <!--templates templates/articles/detail.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  <h2>DETAIL</h2>
-  <h3>{{ article.pk }} 번째 글</h3>
-  <hr>
-  <p>제목: {{ article.title }}</p>
-  <p>내용: {{ article.content }}</p>
-  <p>작성 시각: {{ article.created_at }}</p>
-  <p>수정 시각: {{ article.updated_at }}</p>
-  <hr>
-  <a href="{% url 'articles:index' %}">[back]</a>
+{% extends 'base.html' %} {% block content %}
+<h2>DETAIL</h2>
+<h3>{{ article.pk }} 번째 글</h3>
+<hr />
+<p>제목: {{ article.title }}</p>
+<p>내용: {{ article.content }}</p>
+<p>작성 시각: {{ article.created_at }}</p>
+<p>수정 시각: {{ article.updated_at }}</p>
+<hr />
+<a href="{% url 'articles:index' %}">[back]</a>
 {% endblock content %}
 ```
 
 ```html
 <!-- templates/articles/index.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h1>Articles</h1>
 <a href="{% url 'articles:new' %}">[new]</a>
-<hr>
-{% for article in articles %}
-  ...
-  <a href="{% url 'articles:detail' article.pk %}">[detail]</a>
-  <hr>
-{% endfor %}
-{% endblock content %}
+<hr />
+{% for article in articles %} ...
+<a href="{% url 'articles:detail' article.pk %}">[detail]</a>
+<hr />
+{% endfor %} {% endblock content %}
 ```
 
 - redirect 인자 변경
@@ -1841,8 +1558,6 @@ def create(request):
 	...
 	return redirect('articles:detail', article.pk)
 ```
-
-
 
 # DELETE
 
@@ -1858,8 +1573,6 @@ urlpatterns = [
 	path('<int:pk>/delete/', views.delete, name='delete'),
 ```
 
-
-
 ### views
 
 ```python
@@ -1871,8 +1584,6 @@ def delete(request, pk):
 	return redirect('articles:index')
 ```
 
-
-
 ### templates
 
 - Detail 페이지에 작성하며 DB에 영향을 미치기 때문에 POST method를 사용
@@ -1880,15 +1591,11 @@ def delete(request, pk):
 ```html
 <!-- articles/detail.html -->
 
-{% extends 'base.html' %}
-
-{% block content %}
-  ...
-  <form action="{% url 'articles:delete' article.pk %}" method="POST">
-	{% csrf_token %}
-	<input type="submit" value="DELETE">
-  </form>
-  <a href="{% url 'articles:index' %}">[back]</a>
+{% extends 'base.html' %} {% block content %} ...
+<form action="{% url 'articles:delete' article.pk %}" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="DELETE" />
+</form>
+<a href="{% url 'articles:index' %}">[back]</a>
 {% endblock content %}
 ```
-
