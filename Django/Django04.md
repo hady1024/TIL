@@ -9,7 +9,7 @@
 ### App URL mapping (2/3)
 
 - 각 앱의 view 함수를 다른 이름으로 import할 수 있음
-- 이렇게도 가능하지만.. 더 좋은 방법을 생각해보자..
+- 이렇게도 가능하지만.. 더 좋은 방법을 생각해보자..w
 
 ```python
 # firstpjt/urls.py
