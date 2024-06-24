@@ -8,8 +8,6 @@
   - 모델 class를 admin.py에 등록하고 관리
   - 레코드 생성 여부 확인에 매우 유용하며 직접 레코드를 삽입할 수도 있음
 
-
-
 ### admin 계정 생성
 
 ```python
@@ -20,14 +18,10 @@ $ python manage.py createsuperuser
   - ❖ email은 선택사항이기 때문에 입력하지 않고 enter를 입력하는 것이 가능
   - ❖ 비밀번호 생성 시 보안상 터미널에 입력되지 않으니 무시하고 입력을 이어가도록 함
 
-
-
 ### admin site 로그인
 
--  http://127.0.0.1:8000/admin/ 로 접속 후 로그인
+- http://127.0.0.1:8000/admin/ 로 접속 후 로그인
 - 계정만 만든 경우 Django 관리자 화면에서 모델 클래스는 보이지 않음
-
-
 
 ### admin에 모델 클래스 등록
 
@@ -42,17 +36,11 @@ from .models import Article
 admin.site.register(Article)
 ```
 
-
-
 ### 등록된 모델 클래스 확인
-
-
 
 ### 데이터 CRUD 테스트
 
 - admin 페이지에서 데이터를 조작해보기
-
-
 
 # Static files
 
@@ -61,8 +49,6 @@ admin.site.register(Article)
 - 웹 서버는 특정 위치(URL)에 있는 자원(resource)을 요청(HTTP request) 받아서 제공(serving)하는 응답(HTTP response)을 처리하는 것을 기본 동작으로 함
 - 즉, 웹 서버는 요청 받은 URL로 서버에 존재하는 정적 자원(static resource)를 제공
 
-
-
 ### 정적 파일
 
 - 응답할 때 별도의 처리 없이 파일 내용을 그대로 보여주면 되는 파일
@@ -70,9 +56,7 @@ admin.site.register(Article)
 - 예를 들어, 웹 서버는 일반적으로 이미지, 자바 스크립트 또는 CSS와 같은 미리 준비된 추가 파일(움직이지 않는)을 제공해야 함
 - 파일 자체가 고정되어 있고, 서비스 중에도 추가되거나 변경되지 않고 고정되어 있음
 - Django에서는 이러한 파일들을 “Static file”이라 함
-  - Django는 staticfiles 앱을 통해 정적 파일과 관련 된 기능을 제공
-
-
+  - Django는 staticfiles 앱을 통해 정적 파일과 관련 된 기능을 제공.
 
 ### 정적 파일 활용
 
@@ -83,22 +67,18 @@ admin.site.register(Article)
 ```html
 {% load static %}
 
-<img src="{% static 'my_app/example.jpg' %}" alt="My image">
+<img src="{% static 'my_app/example.jpg' %}" alt="My image" />
 ```
 
 - 앱의 static 디렉토리에 정적 파일을 저장
   - 예시) my_app/static/my_app/example.jpg
 - STATICFILES_DIRS
   - ‘app/static/’ 디렉토리 경로(기본 경로) 를 사용하는 것외에 추가적인 정적 파일 경로 목록을 정의하는 리스트
-  - 추가 파일 디렉토리에 대한 전체 경로를 포함하는 문자열 목록으로 작성되어야 함 
+  - 추가 파일 디렉토리에 대한 전체 경로를 포함하는 문자열 목록으로 작성되어야 함
 
 ```html
-STATICFILES_DIRS = [
-	BASE_DIR / 'static',
-]
+STATICFILES_DIRS = [ BASE_DIR / 'static', ]
 ```
-
-
 
 - STATIC_URL
   - STATIC_ROOT에 있는 정적 파일을 참조 할 때 사용할 URL
@@ -109,8 +89,6 @@ STATICFILES_DIRS = [
 ```html
 STATIC_URL = '/static/'
 ```
-
-
 
 - STATIC_ROOT
   - collectstatic이 배포를 위해 정적 파일을 수집하는 디렉토리의 절대 경로
@@ -127,6 +105,5 @@ STATIC_URL = '/static/'
 ```html
 {% load static %}
 
-<img src="{% statiac 'my_app/example.jpg' %}" alt="MY image">
+<img src="{% statiac 'my_app/example.jpg' %}" alt="MY image" />
 ```
-
