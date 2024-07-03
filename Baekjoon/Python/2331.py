@@ -18,4 +18,4 @@ while True:
 
 print(len(nums))
 
-# 다시 풀어보기(x2)
+
