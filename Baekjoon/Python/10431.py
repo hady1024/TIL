@@ -9,4 +9,4 @@ for _ in range(P):
                 total+=1
     print(arr[0], total)
 
-# 참고한 풀이 다시 풀어봐야함
+# 다시 해봐도 잘 안됐음 다시 ㄱㄱ
