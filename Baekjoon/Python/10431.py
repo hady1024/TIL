@@ -1,5 +1,5 @@
-P=int(input())
-for _ in range(P):
+N=int(input())
+for _ in range(N):
     arr=list(map(int,input().split()))
     total=0
     for i in range(1,len(arr)-1):
@@ -9,4 +9,3 @@ for _ in range(P):
                 total+=1
     print(arr[0], total)
 
-# 다시 해봐도 잘 안됐음 다시 ㄱㄱ
