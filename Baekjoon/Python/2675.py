@@ -6,4 +6,4 @@ for _ in range(n):
         print(x * int(cnt), end="")
     print()
 
-# 다시 풀어보기
+
