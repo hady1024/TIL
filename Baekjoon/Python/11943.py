@@ -3,6 +3,3 @@ C, D = map(int, input().split())
 
 print(min(A + D, B + C))
 
-A, B = map(
-    int,
-)
