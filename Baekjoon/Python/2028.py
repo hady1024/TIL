@@ -8,4 +8,3 @@ for _ in range(N):
     else:
         print("NO")
 
-# 참고한것 다시 풀어보기
