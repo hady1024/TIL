@@ -9,4 +9,3 @@ for i in range(t-1, -1, -1):
     n = n%(9**i)
 print(res)
 
-# 참고한것 다시해보기
