@@ -15,4 +15,3 @@ while 1:
             carry = 0
     print(cnt)
 
-    # 잘 안됐음 다시 해보기
