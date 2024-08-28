@@ -17,4 +17,4 @@ for _ in range(int(input())):
         b = 0
     print((prevFes[a] + fes[b]) * 10000)
 
-# 다시 풀어보기(x2222)
+# 다시 풀어보기(x33333) (다중 for문 다시 공부)
