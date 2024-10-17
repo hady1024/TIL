@@ -17,4 +17,4 @@ if __name__ == "__main__":
     for self_num in self_numbers:
         print(self_num)
 
-# 다시 풀어보기..(x2), 다시다시
+
