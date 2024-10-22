@@ -17,4 +17,4 @@ while True:
 
    print(Cd_count)
 
-# 다시 해보기 
+# 다시 해보기 (x2)
