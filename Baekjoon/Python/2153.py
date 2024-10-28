@@ -14,4 +14,4 @@ for i in input():
         s += ord(i) - 38
 print(is_prime(s))
 
-# 잘 안됨
+#
