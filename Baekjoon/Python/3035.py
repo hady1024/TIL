@@ -12,4 +12,3 @@ for i in range(R):
 for s in scanner:
     print("".join(s))
 
-# 참고한것 다시 해보기 (x2)
