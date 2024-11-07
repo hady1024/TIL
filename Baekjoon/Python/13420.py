@@ -11,3 +11,5 @@ for _ in range(int(input())):
     elif op == '/':
         t = a//b
     print("correct" if t == c else "wrong answer")
+
+# 다시다시 
