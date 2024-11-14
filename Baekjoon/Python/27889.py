@@ -3,4 +3,3 @@ dic = {'NLCS': 'North London Collegiate School', 'BHA': 'Branksome Hall Asia',
 short = input()
 print(dic[short])
 
-# 참고한것 
