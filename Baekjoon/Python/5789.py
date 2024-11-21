@@ -7,4 +7,3 @@ for _ in range(t):
 		print('Do-it')
 	else: print('Do-it-Not')
 
-# 참고한것임..
