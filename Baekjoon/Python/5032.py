@@ -7,7 +7,7 @@ while n//c:
 print(res)
 
 
-# 
+# 2
 e,f,c=map(int,input().split())
 i=0;e+=f
 while e>=c:
@@ -16,4 +16,3 @@ while e>=c:
  i+=p
 print(i)
 
-# 참고한것 다시풀어보기
