@@ -7,4 +7,3 @@ while x*x <= N:
     result +=1
 print(result)
 
-# 다른 사람 풀이 (다시해보기)
