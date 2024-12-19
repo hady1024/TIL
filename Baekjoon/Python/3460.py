@@ -1,4 +1,3 @@
-# 다른 사람의 풀이
 T = int(input())
 
 for _ in range(T):
@@ -7,4 +6,3 @@ for _ in range(T):
         if n[-i - 1] == "1":
             print(i, end=" ")
 
-# 다시 풀어보기
