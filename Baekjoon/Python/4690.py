@@ -6,5 +6,3 @@ for a in range(6,101):
                     print(f"Cube = {a}, Triple = ({b},{c},{d})")
                 if a**3 < b**3 + c**3 + d**3:
                     break
-
-# 참고한것 다시해보기
