@@ -5,5 +5,3 @@ if __name__ == "__main__":
             break
         alphabet, sentence = question[0], question[1:].lower()
         print(alphabet, sentence.count(alphabet))
-
-# 참고한것 다시 해보기
