@@ -15,4 +15,3 @@ while end<=n:
         summ+=end
 print(cnt)
 
-# 다시 해보기
