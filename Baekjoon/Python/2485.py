@@ -21,4 +21,3 @@ for each in arr:
     result += each // g - 1
 print(result)
 
-# 다시 풀어보기(x3333333333333)
