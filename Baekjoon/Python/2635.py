@@ -12,4 +12,4 @@ for i in range(1, N+1) :
 print(len(result))
 print(*result)
 
-# 참고한것 다시 풀어보기
+# 참고한것 다시 풀어보기 (x2)
