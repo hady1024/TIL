@@ -15,4 +15,4 @@ for row in range(N):
 for r in AxB:
     print(*r)
 
-# 다시 풀어보기(x3333)
+
