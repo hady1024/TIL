@@ -17,3 +17,5 @@ for _ in range(n):
 answer.sort()
 for i in answer:
     print(i)
+
+# 다시 해봤는데 안됐음 다시해보기
