@@ -10,4 +10,3 @@ elif B < D:
 else:
     print("daisy")
 
-# 다시 해보기
