@@ -8,4 +8,4 @@ for _ in range(N):
             a[i] = '0'
 print("Deletion succeeded" if a == b else "Deletion failed")
 
-# 다시해보기
+# 다시해보기(x2)
