@@ -7,5 +7,3 @@ for _ in range(N):
         else:
             a[i] = '0'
 print("Deletion succeeded" if a == b else "Deletion failed")
-
-# 다시해보기(x2)
