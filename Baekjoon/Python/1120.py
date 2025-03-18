@@ -10,4 +10,3 @@ for i in range(len(b) - len(a) + 1):
 
 print(min(answer))
 
-# 다시 풀어보기
