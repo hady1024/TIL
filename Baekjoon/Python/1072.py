@@ -15,4 +15,3 @@ else:
             left=mid+1
     print(res)
 
-# 다시 풀기 (x2)
