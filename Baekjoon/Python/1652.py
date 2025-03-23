@@ -25,4 +25,3 @@ for i in range(n):
             ans[1] += 1
 print(*ans)
 
-# 참고한것 다시 풀어보기
