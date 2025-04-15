@@ -17,3 +17,5 @@ for i in reversed(range(N)):
         last = stack[i]
 
 print(count)
+
+# 다시 해보기 
