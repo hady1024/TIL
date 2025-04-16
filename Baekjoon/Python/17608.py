@@ -18,4 +18,3 @@ for i in reversed(range(N)):
 
 print(count)
 
-# 다시 해보기 
