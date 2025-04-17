@@ -7,4 +7,4 @@ def fac(n):
 n,m = map(int,input().split())
 print(fac(n) // (fac(m)*fac(n-m)))
 
-# fac(팩토리얼) 다시 공부 
+# fac(팩토리얼) 
