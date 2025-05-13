@@ -14,4 +14,4 @@ else:
         ans *= odd[i]
 print(ans)
 
-# 다시 해보기
+# 다시 해보기 (x2 잘 안됏음)
