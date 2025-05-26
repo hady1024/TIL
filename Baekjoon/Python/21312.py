@@ -14,3 +14,4 @@ else:
         ans *= odd[i]
 print(ans)
 
+# 다시 해보기
