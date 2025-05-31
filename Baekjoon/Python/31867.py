@@ -14,5 +14,3 @@ elif odd < even:
     print(0)
 else:
     print(-1)
-
-# 다시 해보기
