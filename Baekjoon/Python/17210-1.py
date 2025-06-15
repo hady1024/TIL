@@ -6,3 +6,6 @@ if N <= 5:
         print(a)
 else:
     print("Love is open door")
+    
+    
+# int(not a)는 a의 값에 따라 0 또는 1
