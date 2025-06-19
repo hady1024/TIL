@@ -15,4 +15,3 @@ for i in range(1, 2*len(A)-1):
 
 print(dp[-1][0], dp[-1][1], sep='')
 
-# 다시 해보기 
