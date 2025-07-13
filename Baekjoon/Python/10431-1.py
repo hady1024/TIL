@@ -21,4 +21,3 @@ for k in range(1,p+1):
                 break
     print(k,ans)
     
-# 다시 해보기
