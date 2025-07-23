@@ -17,5 +17,3 @@ else:
     max -= 1                 
     min += 1
     print((n-min)*(max-n+1) + (max-n))
-
-# 다시 해보기
