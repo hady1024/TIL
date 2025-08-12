@@ -15,5 +15,5 @@ print(len(result))
 for i in result :
     print(i)
 
-# 다시 해보기 다시 해보니 안됐음
+
 
