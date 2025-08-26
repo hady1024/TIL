@@ -11,3 +11,5 @@ while start <= end:
         end = mid - 1
  
 print(start)
+
+# 잘 안됏음 다시 ㄱㄱ
