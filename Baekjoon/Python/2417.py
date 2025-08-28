@@ -12,4 +12,3 @@ while start <= end:
  
 print(start)
 
-# 잘 안됏음 다시 ㄱㄱ
