@@ -16,4 +16,3 @@ for sz in size:
 print(shirt_bundle)
 print(N//P, N%P)
 
-# 다시 해보기 
