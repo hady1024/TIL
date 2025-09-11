@@ -17,4 +17,4 @@ arr2.sort(reverse=True)
 print(arr2[0][3])  
 print(arr1[0][3])
 
-# 다시해보기
+# 다시해보기*22
