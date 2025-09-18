@@ -23,4 +23,3 @@ lst.sort()
 for num in lst:
     print(num)
 
-# 다시 풀어보니 안됐음 다시 해보기 (x2)
