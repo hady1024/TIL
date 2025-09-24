@@ -5,4 +5,3 @@ for x in range(-999,1000):
       print(x, y)
       break
 
-# 다시 해보기
