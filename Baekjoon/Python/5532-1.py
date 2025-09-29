@@ -17,3 +17,6 @@ else:
         print(l - f)
     else:
         print(l - 1 - f)
+
+
+# 다시해보기
