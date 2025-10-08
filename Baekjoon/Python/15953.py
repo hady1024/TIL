@@ -16,4 +16,6 @@ for _ in range(int(input())):
     if b >= len(fes):
         b = 0
     print((prevFes[a] + fes[b]) * 10000)
+    
+# 다시 해보기
 
