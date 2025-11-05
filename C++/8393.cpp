@@ -1,5 +1,12 @@
-int sum = 0;
-for(int i = 1; i <= n; i++) {
-	sum = sum + i;
+#include <iostream>
+ 
+using namespace std;
+ 
+int main(int argc, char const *argv[]) {
+	int n;
+	cin >> n;
+	cout << n * (n + 1) / 2;
+	return 0;
 }
-cout << sum;
+
+// 다시 해보기 
