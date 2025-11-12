@@ -10,5 +10,3 @@ int main(int argc, char const *argv[]) {
     printf("%d\n", (A % C * B % C) % C);
     return 0;
 }
-
-// 다시 해보기 
