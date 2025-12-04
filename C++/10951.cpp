@@ -12,4 +12,3 @@ int main(int argc, const char * argv[]) {
 	return 0;
 }
 
-// 참고한것 while 문 다시 해보기
