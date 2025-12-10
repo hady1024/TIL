@@ -14,5 +14,3 @@ int main(int argc, char const *argv[]) {
  
     return 0;
 }
-
-// 참고한것 다시 해보기
