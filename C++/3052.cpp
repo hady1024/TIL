@@ -18,4 +18,3 @@ int main() {
 	cout << count << endl;
 }
 
-// 참고한것 다시 해보기
