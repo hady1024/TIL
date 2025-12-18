@@ -28,4 +28,3 @@ int main() {
 	return 0;
 }
 
-// 다시 풀어보기
