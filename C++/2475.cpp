@@ -15,4 +15,3 @@ int main() {
 	cout << answer;
 }
 
-// 다시 해보기
