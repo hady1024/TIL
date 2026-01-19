@@ -14,5 +14,3 @@ int main() {
 		cout << c << endl;
 	}
 }
-
-// 다시 해보기
