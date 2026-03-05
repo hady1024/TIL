@@ -38,4 +38,3 @@ for i in range(T):
 
     print(reward*10000)
     
-# 다시해보기
