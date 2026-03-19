@@ -20,4 +20,4 @@ while True:
             print(int(i), end='')
         break
     
-# while 문 다시 해보기 참고한것
+# 다시 해보기 잘 안됐음
