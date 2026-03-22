@@ -19,5 +19,4 @@ while True:
         for i in lst:
             print(int(i), end='')
         break
-    
-# 다시 해보기 잘 안됐음
+   
