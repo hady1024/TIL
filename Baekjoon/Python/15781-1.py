@@ -1,0 +1,6 @@
+n, k = map(int, input().split())
+head=list(map(int, input().split()))
+joggy=list(map(int, input().split()))
+head.sort()
+joggy.sort()
+print(int(head[n-1])+int(joggy[k-1]))
