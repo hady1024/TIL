@@ -30,4 +30,3 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-// 파이썬때 생각하면서 했는데 얼추 되다가 단추가 다 안꿰어져서 참고함 다시해보기
