@@ -17,4 +17,3 @@ if flag == 0 :
 else :
   print("It is not a prime word.")
 
-# 다시 해보기
