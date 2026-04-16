@@ -28,4 +28,4 @@ for _ in range(int(input())):
     print(lcm(n, m), end=" ")
     print(math.gcd(n, m))
 
-# 다시 풀어봐야함..(x33333) 왜 이렇게 하는지는 알겠는데 풀이를 할라하면 안됨
+# 되긴 됨
