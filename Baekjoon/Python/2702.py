@@ -28,4 +28,3 @@ for _ in range(int(input())):
     print(lcm(n, m), end=" ")
     print(math.gcd(n, m))
 
-# 되긴 됨
