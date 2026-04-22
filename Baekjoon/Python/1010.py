@@ -13,4 +13,4 @@ for _ in range(T):
     print(bridge)
 
 
-# 공부 다시해보기 잘 모르는 문제
+# Factorial 다시 공부
