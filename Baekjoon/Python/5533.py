@@ -16,3 +16,5 @@ for i in range(n):
     sum.append(get)
 for i in sum:
     print(i)
+    
+# 다시 해보기
