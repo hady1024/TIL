@@ -15,5 +15,3 @@ for i in range(N-1):
     print(result[i],end=", ")
 print(result[N-1], end = "")
 print(">",end="")
-
-# 다시해보기
