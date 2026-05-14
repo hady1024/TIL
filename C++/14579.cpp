@@ -24,4 +24,3 @@ int main(){
     return 0;
 }
 
-// 다시 해보기
