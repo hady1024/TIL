@@ -9,5 +9,3 @@ def solve(r, n):
 print(solve("", int(input())))
 
 
-# 다시 해보기
-        
