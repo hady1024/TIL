@@ -12,4 +12,3 @@ def fibonacci(n):
 n = int(input())
 print(fib(n), fibonacci(n))
 
-# 다시 해보기
