@@ -17,3 +17,4 @@ for i in range(n):
 for i in sum:
     print(i)
     
+# 다시 풀어보니 잘 안됐음
