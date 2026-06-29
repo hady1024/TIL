@@ -13,4 +13,3 @@ for _ in range(0, n):
         num = calc(num, i)
     print("%.2f" % num)
 
-# 함수 사용시 풀이 (참고한것 다시해보기)
