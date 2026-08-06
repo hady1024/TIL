@@ -15,4 +15,3 @@ int main() {
     else cout<<"tie";
 }
 
-// 참고한것 다시해보기
