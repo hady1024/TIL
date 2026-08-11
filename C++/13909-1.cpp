@@ -8,5 +8,3 @@ int main(){
   cin >> n;
   cout << int(sqrt(n));
 }
-
-// 다시 해보기
